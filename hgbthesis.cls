@@ -137,7 +137,7 @@
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@semester}{#1}}
 }
 
-\newcommand{\@digitalcontent}{\@MissingArg{URL to digital content missing!}}
+\newcommand{\@digitalcontent}{A valid URL to the digital content is missing!}
 \newcommand{\digitalcontent}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@digitalcontent}{#1}}
 }
