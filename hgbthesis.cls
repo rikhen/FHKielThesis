@@ -11,6 +11,7 @@
 \ProvidesClass{hgbthesis}[\hgbthesisDate\space LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
 
 \RequirePackage{xifthen}
+\RequirePackage{qrcode}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
 \ifpdf{}% \typeout{hgbthesis: *** LaTeX in PDF mode ***}
@@ -134,6 +135,11 @@
 \newcommand{\@semester}{\@MissingArg{Semester not specified!}}
 \newcommand{\semester}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@semester}{#1}}
+}
+
+\newcommand{\@digitalcontent}{\@MissingArg{URL to digital content missing!}}
+\newcommand{\digitalcontent}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@digitalcontent}{#1}}
 }
 
 \newcommand{\@logofile}[0]{}
@@ -504,6 +510,51 @@ This work is published under the conditions of the
 }
 
 
+%% Digital Content Pages in German and English --------------------------------
+
+% German
+
+\newcommand{\@digitalcontentpageDe}{%
+	\newpage
+	\setcounter{page}{2}
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+		%
+		\vspace{40mm} 
+		{Zus\"atzliche Anlagen in digitaler Form wie Quellcode, referenzierte Quellen oder auch eine PDF-Version dieser Arbeit k\"onnen unter dem untenstehenden Link abgerufen werden.}\\
+		\vspace{20mm} 
+		{\qrcode[nolink,height=3cm]{\@digitalcontent}}\\
+		\vspace{10mm}
+		{\Large\url{\@digitalcontent}}\\
+	\end{center}
+}
+
+% English
+
+\newcommand{\@digitalcontentpageEn}{%
+	\newpage
+	\setcounter{page}{2}
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+		%
+		\vspace{40mm} 
+		{Additional digital content such as source code, references or a PDF version of this thesis can be found at the link below.}\\
+		\vspace{20mm} 
+		{\qrcode[nolink,height=3cm]{\@digitalcontent}}\\
+		\vspace{10mm}
+		{\Large\url{\@digitalcontent}}\\
+	\end{center}
+}
+
+\newcommand{\@digitalcontentpage}{%
+\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+	{\@digitalcontentpageDe}%
+	{\@digitalcontentpageEn}
+}
+
+
 %% Declaration Pages in German and English ------------------------------------
 
 % German
@@ -563,18 +614,21 @@ This work is published under the conditions of the
 \renewcommand{\@mastertitlepages}{
 	\@mastertitle
 	\@copyrightpage
+	\@digitalcontentpage
 	\@declarationpage
 }
      
 \renewcommand{\@diplomatitlepages}{
 	\@diplomatitle
 	\@copyrightpage
+	\@digitalcontentpage
 	\@declarationpage
 }
 
 \renewcommand{\@bachelortitlepages}{
 	\@bachelortitle
 	\@advisorpage
+	\@digitalcontentpage
 	\@declarationpage
 }
 
