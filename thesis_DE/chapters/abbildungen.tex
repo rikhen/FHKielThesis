@@ -134,48 +134,51 @@ aufweisen. Im Gegensatz dazu sollte JPEG nur dann verwendet werden, wenn das Ori
 (Foto) bereits in dieser Form vorliegt.
 
 
-\subsection{Wo liegen die Grafikdateien?} 
+%%% Move to wiki
+% Reason: These two subsections contain things that relate to the template, therefore wiki
 
-Die Bilder werden üblicherweise in einem Unterverzeichnis (oder in mehreren Unterverzeichnissen) abgelegt,
-im Fall dieses Dokuments in \nolinkurl{images/}.
-Dazu dient die folgende Anweisung
-am Beginn des Hauptdokuments \nolinkurl{_DaBa.tex} (\sa\ Anhang \ref{app:latex}):
+%\subsection{Wo liegen die Grafikdateien?} 
 %
-\begin{quote}
-\verb!\graphicspath{{images/}}!
-\end{quote}
+%Die Bilder werden üblicherweise in einem Unterverzeichnis (oder in mehreren Unterverzeichnissen) abgelegt,
+%im Fall dieses Dokuments in \nolinkurl{images/}.
+%Dazu dient die folgende Anweisung
+%am Beginn des Hauptdokuments \nolinkurl{_DaBa.tex} (\sa\ Anhang \ref{app:latex}):
+%%
+%\begin{quote}
+%\verb!\graphicspath{{images/}}!
+%\end{quote}
+%%
+%Der (zum Hauptdokument relative) Pfad \texttt{graphicspath} kann innerhalb des
+%Dokuments jederzeit geändert werden, was durchaus nützlich ist, wenn
+%\zB\ die Grafiken einzelner Kapitel getrennt in entsprechenden Verzeichnissen
+%abgelegt werden sollen.
+%Die Größe der Abbildung im Druck kann durch Vorgabe einer bestimmten
+%Breite oder Höhe oder eines Skalierungsfaktors gesteuert werden, {\zB}:
+%%
+%\begin{quote}
+%\verb!\includegraphics[width=.85\textwidth]{ibm-360-color}! \\
+%\verb!\includegraphics[scale=1.5]{ibm-360-color}!
+%\end{quote}
+%%
+%Man beachte, dass dabei die Dateiendung nicht explizit angegeben werden muss. 
+%Das ist \va\ dann praktisch, wenn verschiedene Workflows mit jeweils
+%unterschiedlichen Dateitypen verwendet werden.
 %
-Der (zum Hauptdokument relative) Pfad \texttt{graphicspath} kann innerhalb des
-Dokuments jederzeit geändert werden, was durchaus nützlich ist, wenn
-\zB\ die Grafiken einzelner Kapitel getrennt in entsprechenden Verzeichnissen
-abgelegt werden sollen.
-Die Größe der Abbildung im Druck kann durch Vorgabe einer bestimmten
-Breite oder Höhe oder eines Skalierungsfaktors gesteuert werden, {\zB}:
 %
-\begin{quote}
-\verb!\includegraphics[width=.85\textwidth]{ibm-360-color}! \\
-\verb!\includegraphics[scale=1.5]{ibm-360-color}!
-\end{quote}
+%\subsection{Grafiken einrahmen} 
 %
-Man beachte, dass dabei die Dateiendung nicht explizit angegeben werden muss. 
-Das ist \va\ dann praktisch, wenn verschiedene Workflows mit jeweils
-unterschiedlichen Dateitypen verwendet werden.
-
-
-\subsection{Grafiken einrahmen} 
-
-%Mit dem Makro \verb!\FramePic{}! (definiert in \texttt{hgb.sty}) kann optional ein dünner 
+%%Mit dem Makro \verb!\FramePic{}! (definiert in \texttt{hgb.sty}) kann optional ein dünner 
+%%Rahmen rund um die Grafik erzeugt werden, \zB:
+%Mit dem Makro \verb!\fbox{...}! kann optional ein dünner 
 %Rahmen rund um die Grafik erzeugt werden, \zB:
-Mit dem Makro \verb!\fbox{...}! kann optional ein dünner 
-Rahmen rund um die Grafik erzeugt werden, \zB:
-%
-\begin{quote}
-%\verb!\FramePic{\includegraphics[height=50mm]{ibm-360-color}}!
-\verb!\fbox{\includegraphics[height=50mm]{ibm-360-color}}!
-\end{quote}
-%
-Das wird üblicherweise nur bei Rasterbildern nötig sein, insbesondere wenn sie zum Rand hin sehr hell sind
-und ohne Rahmen nicht vom Hintergrund abgrenzbar wären.
+%%
+%\begin{quote}
+%%\verb!\FramePic{\includegraphics[height=50mm]{ibm-360-color}}!
+%\verb!\fbox{\includegraphics[height=50mm]{ibm-360-color}}!
+%\end{quote}
+%%
+%Das wird üblicherweise nur bei Rasterbildern nötig sein, insbesondere wenn sie zum Rand hin sehr hell sind
+%und ohne Rahmen nicht vom Hintergrund abgrenzbar wären.
 
 \subsection{Rasterbilder (Pixelgrafiken)}
 
@@ -258,61 +261,63 @@ für eine bestimmte Zeichensoftware sollte das im Zweifelsfall
 ausprobiert werden.
 PDF kann im Notfall über einen entsprechenden Druckertreiber erzeugt werden.
 
+%%% Move to wiki
+% Reason: No offense, I know this is brand new but I think this is a special case that not everyone might need.
 
-\subsubsection{Vektorgrafiken mit \emph{Inkscape}}
-\label{sec:InkscapeGraphics}
-
-Mit \emph{Inkscape}\footnote{\url{https://inkscape.org/}} können Vektorgrafiken auf
-sehr einfache Weise erstellt werden.
-Das Basisformat von Inkscape ist SVG,
-nach dem Export als PDF können solche Grafiken aber wie üblich mit
-\verb!\includegraphics[..]{..}! in \latex\ eingefügt werden.
-
-Eine interessante Möglichkeit dabei ist, Texte innerhalb der Grafik
-durch \latex\ automatisch ersetzen zu lassen.
-Dadurch werden in der fertigen Grafik dieselben Schriften wie im Fließtext
-verwendet und \va\ mathematische Elemente entsprechend ersetzt.
-Abbildung \ref{fig:InkscapeExample} zeigt ein Beispiel dazu:
+%\subsubsection{Vektorgrafiken mit \emph{Inkscape}}
+%\label{sec:InkscapeGraphics}
 %
-\begin{itemize}
-\item
-Die ursprüngliche Inkscape-Grafik \nolinkurl{images/inkscape-template.svg}  enthält
-Texte, die nachträglich von \latex\ ersetzt werden sollen (siehe Abb.~\ref{fig:InkscapeExample} (a)).
-\item
-Durch \textsf{Save a Copy...} (als PDF) in Inkscape, mit den Einstellungen wie in 
-Abb.~\ref{fig:InkscapeExample} (c), werden folgende zwei Files erzeugt:
-\begin{itemize}
-\item[] \nolinkurl{inkscape-template.pdf}: eine PDF-Datei der Grafik ohne Texte, 
-\item[] \nolinkurl{inkscape-template.pdf_tex}: eine \latex-Datei mit allen relevanten Informationen.
-\end{itemize}
-\end{itemize}
+%Mit \emph{Inkscape}\footnote{\url{https://inkscape.org/}} können Vektorgrafiken auf
+%sehr einfache Weise erstellt werden.
+%Das Basisformat von Inkscape ist SVG,
+%nach dem Export als PDF können solche Grafiken aber wie üblich mit
+%\verb!\includegraphics[..]{..}! in \latex\ eingefügt werden.
 %
-Die Einbindung der Grafik in das Dokument erfolgt schließlich durch
-\begin{itemize}
-\item[] \verb!\input{images/inkscape-template.pdf_tex}!,
-\end{itemize}
-mit dem in Abb.~\ref{fig:InkscapeExample} (b) gezeigten Ergebnis.
-
-
-
-\begin{figure}
-\centering\small
-\begin{tabular}{cc}
-\includegraphics[scale=1.0]{inkscape-template-orig} &
-\input{images/inkscape-template.pdf_tex}
-\\
-(a) & (b)
-\\[6pt]
-\multicolumn{2}{c}{\includegraphics[width=0.4\textwidth]{inkscape-pdf-save-screenhot}%
-~~\raisebox{25mm}{(c)}}
-\end{tabular}
-\caption{Beispiel für eine mit \emph{Inkscape} erzeugte Vektorgrafik
-(\nolinkurl{inkscape-template.svg}).
-Originalgrafik im \textit{Inkscape}-Editor (a);
-beim Einfügen werden die Texte automatisch durch LaTeX ersetzt (b).
-Beim Speichern in Inkscape (als PDF) ist auf die Einstellung "`PDF+LaTeX"' zu achten (c).}
-\label{fig:InkscapeExample}
-\end{figure}
+%Eine interessante Möglichkeit dabei ist, Texte innerhalb der Grafik
+%durch \latex\ automatisch ersetzen zu lassen.
+%Dadurch werden in der fertigen Grafik dieselben Schriften wie im Fließtext
+%verwendet und \va\ mathematische Elemente entsprechend ersetzt.
+%Abbildung \ref{fig:InkscapeExample} zeigt ein Beispiel dazu:
+%%
+%\begin{itemize}
+%\item
+%Die ursprüngliche Inkscape-Grafik \nolinkurl{images/inkscape-template.svg}  enthält
+%Texte, die nachträglich von \latex\ ersetzt werden sollen (siehe Abb.~\ref{fig:InkscapeExample} (a)).
+%\item
+%Durch \textsf{Save a Copy...} (als PDF) in Inkscape, mit den Einstellungen wie in 
+%Abb.~\ref{fig:InkscapeExample} (c), werden folgende zwei Files erzeugt:
+%\begin{itemize}
+%\item[] \nolinkurl{inkscape-template.pdf}: eine PDF-Datei der Grafik ohne Texte, 
+%\item[] \nolinkurl{inkscape-template.pdf_tex}: eine \latex-Datei mit allen relevanten Informationen.
+%\end{itemize}
+%\end{itemize}
+%%
+%Die Einbindung der Grafik in das Dokument erfolgt schließlich durch
+%\begin{itemize}
+%\item[] \verb!\input{images/inkscape-template.pdf_tex}!,
+%\end{itemize}
+%mit dem in Abb.~\ref{fig:InkscapeExample} (b) gezeigten Ergebnis.
+%
+%
+%
+%\begin{figure}
+%\centering\small
+%\begin{tabular}{cc}
+%\includegraphics[scale=1.0]{inkscape-template-orig} &
+%\input{images/inkscape-template.pdf_tex}
+%\\
+%(a) & (b)
+%\\[6pt]
+%\multicolumn{2}{c}{\includegraphics[width=0.4\textwidth]{inkscape-pdf-save-screenhot}%
+%~~\raisebox{25mm}{(c)}}
+%\end{tabular}
+%\caption{Beispiel für eine mit \emph{Inkscape} erzeugte Vektorgrafik
+%(\nolinkurl{inkscape-template.svg}).
+%Originalgrafik im \textit{Inkscape}-Editor (a);
+%beim Einfügen werden die Texte automatisch durch LaTeX ersetzt (b).
+%Beim Speichern in Inkscape (als PDF) ist auf die Einstellung "`PDF+LaTeX"' zu achten (c).}
+%\label{fig:InkscapeExample}
+%\end{figure}
 
 
 \subsubsection{Einbettung von Schriften}
@@ -342,105 +347,107 @@ abhängig und somit kaum vorhersagbar.
 Strichstärken ($\geq 0.25\,\mathrm{pt}$) einstellen!
 
 
+%%% Move to wiki
+% Reason: It's also a special case
+% Discussion: If we keep the Inkscape example, shouldn't this go in here as well?
 
 
-
-\subsection{\tex-Schriften auch in Grafiken?}
-\label{sec:tex-schriften-in-grafiken}
-
-Während bei Abbildungen, die mit externen
-Grafik-Programmen erzeugt werden, meist mit ähnlich aussehende
-Schriften (wie \emph{Times-Roman} oder \emph{Garamond}) Abhilfe schaffen,
-besteht bei Puristen oft der verständliche Wunsch, die 
-\emph{Computer-Modern} (CM) Schriftfamilie von {\tex}/{\latex} auch
-innerhalb von eingebetteten Grafiken einzusetzen.
-
-\subsubsection{\emph{BaKoMa}-Schriften (TrueType)}
-
-Glücklicherweise stehen einige Portierungen von CM als {\em
-TrueType}-Schriften zur Verfügung, die auch in herkömmlichen
-DTP-Anwendungen unter \emph{Windows} und \emph{Mac~OS} verwendet werden
-können. Empfehlenswert ist \zB\ die \emph{BaKoMa Fonts
-Collection}\footnote{Von Basil K.\ Malyshev -- die BaKoMa-Fonts
-liegen dieser Vorlage bei, ansonsten finden sie sich \zB\ unter
-\url{www.ctan.org/tex-archive/fonts/cm/ps-type1/bakoma/}.}, die
-neben den CM-Standardschriften auch die mathematischen Schriften
-der AMS-Familie ent\-hält und zudem kostenfrei ist. Natürlich
-müssen die TrueType Schriften vor der Verwendung zunächst auf dem
-eigenen PC installiert werden. 
-%Ein Beispiel für eine in {\em
-%Freehand} erzeugte Grafik mit CM-Schriften findet sich in
-%Abb.~\ref{fig:latex-pdf-workflow} (Seite
-%\pageref{fig:latex-pdf-workflow}).
-
-\subsubsection{\emph{Latin Modern Roman} Fonts (OpenType)}
-
-Eine Alternative dazu sind die "`LM-Roman"'%
-\footnote{\url{http://www.gust.org.pl/projects/e-foundry/latin-modern}}
- Open-Type Schriften, die speziell für die Verwendung im Umfeld von \latex\ entwickelt wurden.
-Sie sind auch Teil der MikTeX-Installation.%
-\footnote{\zB unter \url{C:/Program Files (x86)/MikTeX 2.9/fonts/opentype/public/lm/}}
-Diese Schriften enthalten \ua\ Zeichen mit Umlauten und sind daher auch für deutsche Texte recht
-bequem zu verwenden.
-
-
-
-
-\subsection{Für Gourmets: Grafiken mit \latex-Overlays}
-\label{sec:GraphicOverlays}
-
-Bisweilen ist es erforderlich, ein bestehendes Bilder oder eine Grafik mit 
-\latex-eigenen (Vektor-)Elementen zu überlagern, \zB\ für Markierungen
-oder Beschriftungen. Ein typisches Beispiel ist in Abb.~\ref{fig:overpic-example}
-gezeigt, wo eine mit \emph{Mathematica} generierte PDF-Grafik
-mit mathematischen Elementen annotiert wird.
-
-
-\begin{figure}
-\centering\small
-%\includegraphics[width=0.85\textwidth]{mathematica-example}
-\vspace*{3mm}
-\begin{overpic}[width=0.85\textwidth]{mathematica-example}
-	\put(101,14){$x$}%
-	\put(4,31){$f(x)$}%
-	\put(29.5,28){\line(1,1){2}}%
-	{\color{green!70!black}\put(29.5,28){\circle*{2.0}}}%
-	\put(32,30){$\cos(\frac{7}{3} x)$}%
-	\put(59,28){\line(1,1){2}}%
-	{\color{blue!70!black}\put(59,28){\circle*{2.0}}}%
-	\put(61.5,30){$\cos(x)$}%
-\end{overpic}
-\caption{Beispiel für die Verwendung des \texttt{overpic}-Pakets zum Einfügen
-von \latex-Elementen über eine importierte Grafik.
-In diesem Fall wurden die mathematischen Elemente $x$, $f(x)$, $\cos(x)$ und $\smash{\cos(\frac{7}{3} x)}$
-sowie zwei diagonale Geraden und gefüllte (färbige) Kreise eingefügt.
-Darunter liegt die Vektor\-grafik \texttt{mathematica-example.pdf}.}
-\label{fig:overpic-example}
-\end{figure}
-
-
-
-Dazu wird das \texttt{overpic}-Paket\footnote{\url{https://www.ctan.org/pkg/overpic}}
-verwendet und zum Importieren der Grafik anstelle von \verb!\includegraphics!
-die Umgebung \verb!\begin{overpic}! \ldots \verb!\end{overpic}! verwendet 
-(mit ähnlicher Syntax):
-
-\begin{LaTeXCode}[numbers=none]
-\begin{overpic}[width=0.85\textwidth]{mathematica-example}
-	\put(101,14){$x$}%
-	\put(4,31){$f(x)$}%
-	\put(29.5,28){\line(1,1){2}}%
-	...
-\end{overpic}
-\end{LaTeXCode}
-
-Die \texttt{overpic}-Umgebung bildet gleichzeitig eine \texttt{picture}-Umgebung, 
-in der \latex-Zeichenanweisungen (wie \verb!\put! u.ä.) platziert werden
-können, wie in obigem Beispiel gezeigt.\footnote{Die Standard-Zeichenanweisungen
-in \latex sind ziemlich restriktiv, weshalb hier zusätzlich das \texttt{pict2e}-Paket
-(\url{https://www.ctan.org/pkg/pict2e}) verwendet wird.}
-Die $x/y$-Positionen sind in Prozent der Bildbreite angegeben.
-Weitere Details finden sich im Quelltext.
+%\subsection{\tex-Schriften auch in Grafiken?}
+%\label{sec:tex-schriften-in-grafiken}
+%
+%Während bei Abbildungen, die mit externen
+%Grafik-Programmen erzeugt werden, meist mit ähnlich aussehende
+%Schriften (wie \emph{Times-Roman} oder \emph{Garamond}) Abhilfe schaffen,
+%besteht bei Puristen oft der verständliche Wunsch, die 
+%\emph{Computer-Modern} (CM) Schriftfamilie von {\tex}/{\latex} auch
+%innerhalb von eingebetteten Grafiken einzusetzen.
+%
+%\subsubsection{\emph{BaKoMa}-Schriften (TrueType)}
+%
+%Glücklicherweise stehen einige Portierungen von CM als {\em
+%TrueType}-Schriften zur Verfügung, die auch in herkömmlichen
+%DTP-Anwendungen unter \emph{Windows} und \emph{Mac~OS} verwendet werden
+%können. Empfehlenswert ist \zB\ die \emph{BaKoMa Fonts
+%Collection}\footnote{Von Basil K.\ Malyshev -- die BaKoMa-Fonts
+%liegen dieser Vorlage bei, ansonsten finden sie sich \zB\ unter
+%\url{www.ctan.org/tex-archive/fonts/cm/ps-type1/bakoma/}.}, die
+%neben den CM-Standardschriften auch die mathematischen Schriften
+%der AMS-Familie ent\-hält und zudem kostenfrei ist. Natürlich
+%müssen die TrueType Schriften vor der Verwendung zunächst auf dem
+%eigenen PC installiert werden. 
+%%Ein Beispiel für eine in {\em
+%%Freehand} erzeugte Grafik mit CM-Schriften findet sich in
+%%Abb.~\ref{fig:latex-pdf-workflow} (Seite
+%%\pageref{fig:latex-pdf-workflow}).
+%
+%\subsubsection{\emph{Latin Modern Roman} Fonts (OpenType)}
+%
+%Eine Alternative dazu sind die "`LM-Roman"'%
+%\footnote{\url{http://www.gust.org.pl/projects/e-foundry/latin-modern}}
+% Open-Type Schriften, die speziell für die Verwendung im Umfeld von \latex\ entwickelt wurden.
+%Sie sind auch Teil der MikTeX-Installation.%
+%\footnote{\zB unter \url{C:/Program Files (x86)/MikTeX 2.9/fonts/opentype/public/lm/}}
+%Diese Schriften enthalten \ua\ Zeichen mit Umlauten und sind daher auch für deutsche Texte recht
+%bequem zu verwenden.
+%
+%
+%
+%
+%\subsection{Für Gourmets: Grafiken mit \latex-Overlays}
+%\label{sec:GraphicOverlays}
+%
+%Bisweilen ist es erforderlich, ein bestehendes Bilder oder eine Grafik mit 
+%\latex-eigenen (Vektor-)Elementen zu überlagern, \zB\ für Markierungen
+%oder Beschriftungen. Ein typisches Beispiel ist in Abb.~\ref{fig:overpic-example}
+%gezeigt, wo eine mit \emph{Mathematica} generierte PDF-Grafik
+%mit mathematischen Elementen annotiert wird.
+%
+%
+%\begin{figure}
+%\centering\small
+%%\includegraphics[width=0.85\textwidth]{mathematica-example}
+%\vspace*{3mm}
+%\begin{overpic}[width=0.85\textwidth]{mathematica-example}
+%	\put(101,14){$x$}%
+%	\put(4,31){$f(x)$}%
+%	\put(29.5,28){\line(1,1){2}}%
+%	{\color{green!70!black}\put(29.5,28){\circle*{2.0}}}%
+%	\put(32,30){$\cos(\frac{7}{3} x)$}%
+%	\put(59,28){\line(1,1){2}}%
+%	{\color{blue!70!black}\put(59,28){\circle*{2.0}}}%
+%	\put(61.5,30){$\cos(x)$}%
+%\end{overpic}
+%\caption{Beispiel für die Verwendung des \texttt{overpic}-Pakets zum Einfügen
+%von \latex-Elementen über eine importierte Grafik.
+%In diesem Fall wurden die mathematischen Elemente $x$, $f(x)$, $\cos(x)$ und $\smash{\cos(\frac{7}{3} x)}$
+%sowie zwei diagonale Geraden und gefüllte (färbige) Kreise eingefügt.
+%Darunter liegt die Vektor\-grafik \texttt{mathematica-example.pdf}.}
+%\label{fig:overpic-example}
+%\end{figure}
+%
+%
+%
+%Dazu wird das \texttt{overpic}-Paket\footnote{\url{https://www.ctan.org/pkg/overpic}}
+%verwendet und zum Importieren der Grafik anstelle von \verb!\includegraphics!
+%die Umgebung \verb!\begin{overpic}! \ldots \verb!\end{overpic}! verwendet 
+%(mit ähnlicher Syntax):
+%
+%\begin{LaTeXCode}[numbers=none]
+%\begin{overpic}[width=0.85\textwidth]{mathematica-example}
+%	\put(101,14){$x$}%
+%	\put(4,31){$f(x)$}%
+%	\put(29.5,28){\line(1,1){2}}%
+%	...
+%\end{overpic}
+%\end{LaTeXCode}
+%
+%Die \texttt{overpic}-Umgebung bildet gleichzeitig eine \texttt{picture}-Umgebung, 
+%in der \latex-Zeichenanweisungen (wie \verb!\put! u.ä.) platziert werden
+%können, wie in obigem Beispiel gezeigt.\footnote{Die Standard-Zeichenanweisungen
+%in \latex sind ziemlich restriktiv, weshalb hier zusätzlich das \texttt{pict2e}-Paket
+%(\url{https://www.ctan.org/pkg/pict2e}) verwendet wird.}
+%Die $x/y$-Positionen sind in Prozent der Bildbreite angegeben.
+%Weitere Details finden sich im Quelltext.
 
 
 
@@ -650,6 +657,9 @@ Es gibt für \latex\ spezielle Pakete zur Darstellung von Programmen, die \ua\ a
 \footnote{\url{http://www.ctan.org/tex-archive/macros/latex/contrib/listings/}}
 Damit sind auch die in Tabelle~\ref{tab:CodeUmgebungen} aufgelisteten Code-Umgebungen 
 realisiert.
+
+%%% Maybe move the code environments to the wiki as well?
+
 %
 \begin{table}
 \caption{In \nolinkurl{hgb.sty} vordefinierte Code-Umgebungen.}

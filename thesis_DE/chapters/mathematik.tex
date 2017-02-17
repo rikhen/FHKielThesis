@@ -353,94 +353,97 @@ für mathematische Gleichungen exportiert und direkt (mit etwas
 manueller Nacharbeit) in das eigene \latex-Dokument übernommen werden.
 
 
-\section{Algorithmen}
+%%% Move to wiki
+% Reason: I don't think this is used too often - therefore a special case
 
-Für die Beschreibung von Algorithmen in mathematischer Form oder auch für
-Pseudo\-code ist in \latex selbst keine spezielle Unterstützung vorgesehen.
-Dazu gibt es jedoch eine Reihe von \latex-Paketen (\zB\ \texttt{algorithms}, 
-\texttt{algorithmicx}, \texttt{algorithm2e}).
-Das Beispiel in Alg.~\ref{alg:Example} wurde mit der Float-Umgebung \texttt{algorithm} 
-und dem \texttt{algorithmicx}-Paket ausgeführt
-(Quellcode in Prog.~\ref{prog:AlgExample}).
-
-
-%%--------------------------------------------------------------------
-
-\begin{algorithm}[tbp]
-\caption{Bikubische Interpolation in 2D.
-	$w_{\mathrm{cub}}()$ in Zeile \ref{alg:wcub} bezeichnet die 
-	eindimensionale kubische Interpolationsfunktion.}
-\label{alg:Example}
-
-\begin{algorithmic}[1]     % [1] = all lines are numbered
-\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{$x,y \in \R$}
-	\Statex Returns the interpolated value of the image $I$ 
-					at the continuous position $(x, y)$.
-	
-	\State $\mathit{val} \gets 0$
-	
-	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
-		\State $v \gets \lfloor y \rfloor - 1 + j$
-		\State $p \gets 0$
-		
-		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
-			\State $u \gets \lfloor x \rfloor - 1 + i$
-			\State $p \gets p + I(u,v) \cdot w_{\mathrm{cub}}(x - u )$
-					\label{alg:wcub}
-		\EndFor
-		
-		\State $\mathit{val} \gets \mathit{val} + p \cdot w_{\mathrm{cub}}(y - v)$
-	\EndFor
-	
-	\State\Return $\mathit{val}$
-	
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-
-%%--------------------------------------------------------------------
-
-Weitere Details finden sich im Quelltext und natürlich in der Dokumentation der verwendeten Pakete.
-Umfangreichere Beispiele für Algorithmen mit diesem Setup finden sich \ua\ in \cite{BurgerBurge2015}.
-
-\begin{program}
-\caption{Quellcode zu Algorithmus \ref{alg:Example} (mit \texttt{algorithmicx}).
-Wie ersichtlich, können hier auch beliebig Leerzeilen verwendet werden, was die
-Lesbarkeit deutlich verbessert.}
-\label{prog:AlgExample}
-\begin{LaTeXCode}[numbers=none]
-\begin{algorithm}
-\caption{Bikubische Interpolation in 2D.
-	$w_{\mathrm{cub}}()$ in Zeile \ref{alg:wcub} bezeichnet die 
-	eindimensionale kubische Interpolationsfunktion.}
-\label{alg:Example}
-
-\begin{algorithmic}[1]     % [1] = all lines are numbered
-\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{$x,y \in \R$}
-	\Statex Returns the interpolated value of the image $I$ 
-					at the continuous position $(x, y)$.
-	
-	\State $\mathit{val} \gets 0$
-	
-	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
-		\State $v \gets \lfloor y \rfloor - 1 + j$
-		\State $p \gets 0$
-		
-		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
-			\State $u \gets \lfloor x \rfloor - 1 + i$
-			\State $p \gets p + I(u,v) \cdot w_{\mathrm{cub}}(x - u )$
-					\label{alg:wcub}
-		\EndFor
-		
-		\State $\mathit{val} \gets 
-								\mathit{val} + p \cdot w_{\mathrm{cub}}(y - v)$
-	\EndFor
-	
-	\State\Return $\mathit{val}$
-	
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-\end{LaTeXCode}
-\end{program}
+%\section{Algorithmen}
+%
+%Für die Beschreibung von Algorithmen in mathematischer Form oder auch für
+%Pseudo\-code ist in \latex selbst keine spezielle Unterstützung vorgesehen.
+%Dazu gibt es jedoch eine Reihe von \latex-Paketen (\zB\ \texttt{algorithms}, 
+%\texttt{algorithmicx}, \texttt{algorithm2e}).
+%Das Beispiel in Alg.~\ref{alg:Example} wurde mit der Float-Umgebung \texttt{algorithm} 
+%und dem \texttt{algorithmicx}-Paket ausgeführt
+%(Quellcode in Prog.~\ref{prog:AlgExample}).
+%
+%
+%%%--------------------------------------------------------------------
+%
+%\begin{algorithm}[tbp]
+%\caption{Bikubische Interpolation in 2D.
+%	$w_{\mathrm{cub}}()$ in Zeile \ref{alg:wcub} bezeichnet die 
+%	eindimensionale kubische Interpolationsfunktion.}
+%\label{alg:Example}
+%
+%\begin{algorithmic}[1]     % [1] = all lines are numbered
+%\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{$x,y \in \R$}
+%	\Statex Returns the interpolated value of the image $I$ 
+%					at the continuous position $(x, y)$.
+%	
+%	\State $\mathit{val} \gets 0$
+%	
+%	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
+%		\State $v \gets \lfloor y \rfloor - 1 + j$
+%		\State $p \gets 0$
+%		
+%		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
+%			\State $u \gets \lfloor x \rfloor - 1 + i$
+%			\State $p \gets p + I(u,v) \cdot w_{\mathrm{cub}}(x - u )$
+%					\label{alg:wcub}
+%		\EndFor
+%		
+%		\State $\mathit{val} \gets \mathit{val} + p \cdot w_{\mathrm{cub}}(y - v)$
+%	\EndFor
+%	
+%	\State\Return $\mathit{val}$
+%	
+%\EndProcedure
+%\end{algorithmic}
+%\end{algorithm}
+%
+%%%--------------------------------------------------------------------
+%
+%Weitere Details finden sich im Quelltext und natürlich in der Dokumentation der verwendeten Pakete.
+%Umfangreichere Beispiele für Algorithmen mit diesem Setup finden sich \ua\ in \cite{BurgerBurge2015}.
+%
+%\begin{program}
+%\caption{Quellcode zu Algorithmus \ref{alg:Example} (mit \texttt{algorithmicx}).
+%Wie ersichtlich, können hier auch beliebig Leerzeilen verwendet werden, was die
+%Lesbarkeit deutlich verbessert.}
+%\label{prog:AlgExample}
+%\begin{LaTeXCode}[numbers=none]
+%\begin{algorithm}
+%\caption{Bikubische Interpolation in 2D.
+%	$w_{\mathrm{cub}}()$ in Zeile \ref{alg:wcub} bezeichnet die 
+%	eindimensionale kubische Interpolationsfunktion.}
+%\label{alg:Example}
+%
+%\begin{algorithmic}[1]     % [1] = all lines are numbered
+%\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{$x,y \in \R$}
+%	\Statex Returns the interpolated value of the image $I$ 
+%					at the continuous position $(x, y)$.
+%	
+%	\State $\mathit{val} \gets 0$
+%	
+%	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
+%		\State $v \gets \lfloor y \rfloor - 1 + j$
+%		\State $p \gets 0$
+%		
+%		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
+%			\State $u \gets \lfloor x \rfloor - 1 + i$
+%			\State $p \gets p + I(u,v) \cdot w_{\mathrm{cub}}(x - u )$
+%					\label{alg:wcub}
+%		\EndFor
+%		
+%		\State $\mathit{val} \gets 
+%								\mathit{val} + p \cdot w_{\mathrm{cub}}(y - v)$
+%	\EndFor
+%	
+%	\State\Return $\mathit{val}$
+%	
+%\EndProcedure
+%\end{algorithmic}
+%\end{algorithm}
+%\end{LaTeXCode}
+%\end{program}
 
