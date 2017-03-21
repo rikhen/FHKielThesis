@@ -41,47 +41,90 @@ im Text referenziert wird.
 
 \section{Quellenverweise}
 
-Um einen Eintrag im Quellenverzeichnis zu erstellen und im Text darauf zu verweisen, stellt \latex ein zentrales Kommando zur Verfügung.
+Um einen Eintrag im Quellenverzeichnis zu erstellen und im Text darauf zu verweisen, stellt BibLaTeX zwei Kommandos zur Verfügung.
 
-\subsection{Das \texttt{\textbackslash cite} Makro}
+\subsection{Die \texttt{\textbackslash parencite}, \texttt{\textbackslash textcite} und \texttt{\textbackslash cite} Makros}
 
-Für Quellenverweise im laufenden Text verwendet man die Anweisung
+Für Quellenverweise im laufenden Text wird die Anweisung
 \begin{itemize}
-\item[] \verb!\cite{!\textit{Verweise}\verb!}! 
+\item[] \verb!\parencite{!\textit{Verweise}\verb!}! 
 				\quad oder \quad
-        \verb!\cite[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
+        \verb!\parencite[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
 \end{itemize}
 
 \noindent%
-\textit{Verweise} ist eine durch Kommas getrennte Auflistung von $1$--$n$ Quellen-\emph{Schlüsseln}
+verwendet. \textit{Verweise} ist eine durch Kommas getrennte Auflistung von $1$--$n$ Quellen-\emph{Schlüsseln}
 zur Identifikation der entsprechenden Einträge im Quellenverzeichnis.
 Mit \textit{Zusatztext} können Ergänzungstexte zum aktuellen Quellenverweis angegeben
 werden, wie \zB Kapitel- oder Seitenangaben bei Büchern.
 Einige Beispiele dazu:
 
 \begin{LaTeXCode}[numbers=none]
-Mehr dazu findet sich in \cite{Kopka2003}.
+Mehr dazu findet sich in \parencite{Kopka2003}.
 \end{LaTeXCode}
-$\rightarrow$ Mehr dazu findet sich in \cite{Kopka2003}.
+$\rightarrow$ Mehr dazu findet sich in \parencite{Kopka2003}.
 
 \begin{LaTeXCode}[numbers=none]
-Mehr über \emph{Styles} in \cite[Kap.\ 3]{Kopka2003}.
+Mehr über \emph{Styles} in \parencite[Kap.\ 3]{Kopka2003}.
 \end{LaTeXCode}
-$\rightarrow$ Mehr über \emph{Styles} in \cite[Kap.\ 3]{Kopka2003}.
+$\rightarrow$ Mehr über \emph{Styles} in \parencite[Kap.\ 3]{Kopka2003}.
 
 \begin{LaTeXCode}[numbers=none]
-Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} sind falsch.
+Die Angaben in \parencite[S.\ 274--277]{BurgeBurger1999} sind falsch.
 \end{LaTeXCode}
-$\rightarrow$ Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} sind falsch.
+$\rightarrow$ Die Angaben in \parencite[S.\ 274--277]{BurgeBurger1999} sind falsch.
 
 \begin{LaTeXCode}[numbers=none]
-Überholt sind auch \cite{BurgeBurger1999, Patashnik1988, Duden1997}.
+Überholt sind auch \parencite{BurgeBurger1999, Patashnik1988, Duden1997}.
 \end{LaTeXCode}
-$\rightarrow$ Überholt sind auch \cite{BurgeBurger1999, Patashnik1988, Duden1997}.
+$\rightarrow$ Überholt sind auch \parencite{BurgeBurger1999, Patashnik1988, Duden1997}.
 
 Die Sortierung der Angaben im letzten Beispiel erfolgt automatisch.
 
+Soll explizit der Name des Autors in Verbindung mit dem Quellenverweis verwendet werden, so
+kommt die folgende Anweisung zum Einsatz:
 
+\begin{itemize}
+	\item[] \verb!\textcite{!\textit{Verweise}\verb!}! 
+	\quad oder \quad
+	\verb!\textcite[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
+\end{itemize}
+
+\noindent%
+Für \textit{Verweise} und \textit{Zusatztext} gilt dasselbe wie zuvor erwähnt. Einige Beispiele dazu:
+
+\begin{LaTeXCode}[numbers=none]
+	\textcite{Kopka2003} bieten weiterführende Informationen dazu.
+\end{LaTeXCode}
+$\rightarrow$ \textcite{Kopka2003} bieten weiterführende Informationen dazu.
+
+\begin{LaTeXCode}[numbers=none]
+	\textcite[Kap.\ 3]{Kopka2003} beschreiben die Verwendung von \emph{Styles} ausführlich.
+\end{LaTeXCode}
+$\rightarrow$ \textcite[Kap.\ 3]{Kopka2003} beschreiben die Verwendung von \emph{Styles} ausführlich.
+
+\begin{LaTeXCode}[numbers=none]
+	Die von \textcite[S.\ 274--277]{BurgeBurger1999} gemachten Angaben sind falsch.
+\end{LaTeXCode}
+$\rightarrow$ Die von \textcite[S.\ 274--277]{BurgeBurger1999} gemachten Angaben sind falsch.
+
+\begin{LaTeXCode}[numbers=none]
+	Überholt sind auch die Werke von \textcite{BurgeBurger1999, Patashnik1988, Duden1997}.
+\end{LaTeXCode}
+$\rightarrow$ Überholt sind auch die Werke von \textcite{BurgeBurger1999, Patashnik1988, Duden1997}.
+
+Steht ein Quellenverweis bereits in Klammern, werden diese nicht erneut angegeben und es kommt ein drittes Makro zum Einsatz:
+
+\begin{itemize}
+	\item[] \verb!\cite{!\textit{Verweise}\verb!}! 
+	\quad oder \quad
+	\verb!\cite[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
+\end{itemize}
+
+\begin{LaTeXCode}[numbers=none]
+	Dazu können \emph{Styles} verwendet werden (siehe dazu auch \cite[Kap.\ 3]{Kopka2003}).
+\end{LaTeXCode}
+$\rightarrow$ Dazu können \emph{Styles} verwendet werden (siehe dazu auch \cite[Kap.\ 3]{Kopka2003}).
 
 \subsection{Häufige Fehler}
 
@@ -91,8 +134,8 @@ dem Punkt) stehen, nicht \emph{außerhalb}:
 %
 \begin{center}
 \begin{tabular}{rl}
- \textbf{Falsch:}  & \ldots hier ist der Satz aus. \cite{Oetiker2015} Und jetzt geht es weiter \ldots \\
- \textbf{Richtig:} & \ldots hier ist der Satz aus \cite{Oetiker2015}. Und jetzt geht es weiter \ldots
+ \textbf{Falsch:}  & \ldots Satzende. \parencite{Oetiker2015} Und weiter \ldots \\
+ \textbf{Richtig:} & \ldots Satzende \parencite{Oetiker2015}. Und weiter \ldots
 \end{tabular}
 \end{center}
 
@@ -102,8 +145,8 @@ Ein Quellenverweis ist \emph{immer} durch ein Leerzeichen vom vorangehenden Wort
 
 \begin{center}
 \begin{tabular}{rl}
-\textbf{Falsch:}  & \ldots hier folgt die Quellenangabe\cite{Oetiker2015} und es geht weiter \ldots \\
-\textbf{Richtig:} & \ldots hier folgt die Quellenangabe \cite{Oetiker2015} und es geht weiter \ldots
+\textbf{Falsch:}  & \ldots Quellenangabe\parencite{Oetiker2015} und weiter \ldots \\
+\textbf{Richtig:} & \ldots Quellenangabe \parencite{Oetiker2015} und weiter \ldots
 \end{tabular}
 \end{center}
 
@@ -111,7 +154,7 @@ Ein Quellenverweis ist \emph{immer} durch ein Leerzeichen vom vorangehenden Wort
 Falls ein ganzer Absatz (oder mehr) aus einer Quelle zitiert wird,
 sollte der Verweis im vorlaufenden Text und nicht
 \emph{innerhalb} des Zitats selbst platziert werden. Als Beispiel die folgende Passage
-aus \cite{Oetiker2015}:
+aus \parencite{Oetiker2015}:
 \begin{quote}
 Typographical design is a craft. Unskilled authors often commit
 serious formatting errors by assuming that book design is mostly a
@@ -164,7 +207,7 @@ angegeben werden, wie im nachfolgenden Beispiel gezeigt.
 (an das man nur schwer herankommt) eine Stelle zitieren, die man in einem neueren Werk aus dem Jahr 1969 
 gefunden hat. Das könnte man \zB\ mit folgender Fußnote bewerkstelligen.%
 \footnote{Galileo Galilei, \emph{Dialogo sopra i due massimi sistemi del mondo tolemaico e copernicano}, 
-S.~314 (1632). Zitiert nach \cite[S.~59]{Hemleben1969}.} % Alle Seitennummern sind frei erfunden!
+S.~314 (1632). Zitiert nach \parencite[S.~59]{Hemleben1969}.} % Alle Seitennummern sind frei erfunden!
 
 
 \section{Quellenverzeichnis}
@@ -186,7 +229,7 @@ flexibler.
 
 BibTeX ist ein eigenständiges Programm, das aus einer "`Literaturdatenbank"' (eine oder mehrere
 Textdateien mit vorgegebener Struktur) ein für \latex geeignetes Quellenverzeichnis
-erzeugt. Literatur zur Verwendung von BibTeX findet sich online, \zB \cite{Feder2006, Patashnik1988}.
+erzeugt. Literatur zur Verwendung von BibTeX findet sich online, \zB \parencite{Feder2006, Patashnik1988}.
 Die BibTeX-Datei zu dieser Vorlage ist \nolinkurl{references.bib} (im Hauptverzeichnis).
 
 BibTeX-Dateien können natürlich mit einem Texteditor manuell erstellt werden und für
@@ -348,8 +391,6 @@ angegeben, gefolgt vom zugehörigen Ergebnis im Quellenverzeichnis.
 \label{sec:@book}
 Ein einbändiges Buch (Monographie), das von einem Autor oder mehreren Autoren zur Gänze gemeinsam verfasst und (typischerweise) von einem Verlag herausgegeben wurde.
 % 
-\begin{itemize}
-\item[] 
 \begin{GenericCode}[numbers=none]
 @book{BurgerBurge2015,
     author={Burger, Wilhelm and Burge, Mark James},
@@ -362,13 +403,8 @@ Ein einbändiges Buch (Monographie), das von einem Autor oder mehreren Autoren z
     hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{BurgerBurge2015}]
-Wilhelm Burger und Mark James Burge. \textit{Digitale Bildverarbeitung. Eine
-algorithmische Einführung mit Java}. 3.\ Aufl.\ Heidelberg: Springer-Verlag,
-2015.
-\end{itemize}
-%\printbibliography[keyword=bookexample1,heading=noheader]\nocite{BurgerBurge2015}
-%
+\fullcitebib{BurgerBurge2015}
+
 \emph{Hinweis:} Die Auflagennummer (\texttt{edition}) wird üblicherweise nur angegeben, 
 wenn es \emph{mehr} als eine Ausgabe gibt -- also insbesondere \textbf{nicht für die 1.\ Auflage}, 
 wenn diese die einzige ist!
@@ -383,8 +419,6 @@ Beitrag eines oder mehrerer Autoren in einem Buch oder Sammelband.
 Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel des Sammelbands und
 \texttt{editor} der Name des Herausgebers.
 %
-\begin{itemize}
-\item[] 
 \begin{GenericCode}[numbers=none]
 @incollection{BurgeBurger1999,
   author={Burge, Mark and Burger, Wilhelm},
@@ -399,13 +433,7 @@ Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel de
   hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{BurgeBurger1999}]
-Mark Burge und Wilhelm Burger. "`Ear Biometrics"'. In:\ \textit{Biometrics:
-Personal Identification in Networked Society}. Hrsg.\ von Anil K.\ Jain,
-Bolle Ruud und Pankanti Sharath. Boston:\ Kluwer Academic Publis-
-hers, 1999. Kap.\ 13, S.\ 273--285.
-\end{itemize}
-%\printbibliography[keyword=incollectionexample1,heading=noheader]\nocite{BurgeBurger1999}
+\fullcitebib{BurgeBurger1999}
 
 %%------------------------------------------------------
 
@@ -416,8 +444,6 @@ Man beachte die Verwendung des neuen Felds \texttt{venue}
 zur Angabe des Tagungsorts und 
 \texttt{location} für den Ort der Publikation (des Verlags).
 
-\begin{itemize}
-\item[]
 \begin{GenericCode}[numbers=none]
 @inproceedings{Burger1987,
 	author={Burger, Wilhelm and Bhanu, Bir},
@@ -433,13 +459,7 @@ zur Angabe des Tagungsorts und
 	hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Burger1987}]
-Wilhelm Burger und Bir Bhanu. "`Qualitative Motion Understanding"'.
-In:\ \textit{Proceedings of the Intl.\ Joint Conference on Artificial Intelligence}.
-(Mailand). Hrsg.\ von John P.\ McDermott. San Francisco:\ Morgan
-Kaufmann Publishers, Mai 1987, S.\ 819--821.
-\end{itemize}
-%\printbibliography[keyword=inproceedingsexample1,heading=noheader]\nocite{Burger1987}
+\fullcitebib{Burger1987}
 
 %%------------------------------------------------------
 
@@ -451,8 +471,6 @@ Nummer innerhalb des Jahrgangs. Der Zeitschriftennamen (\texttt{journal} oder
 \texttt{journaltitle}) sollte nur in begründeten Fällen abgekürzt werden, um Missverständnisse
 zu vermeiden.
 %
-\begin{itemize}
-\item[]
 \begin{GenericCode}[numbers=none]
 @article{Mermin1989,
 	author={Mermin, Nathaniel David},
@@ -465,12 +483,8 @@ zu vermeiden.
 	hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Mermin1989}]
-Nathaniel David Mermin. "`What's wrong with these equations?"' In:\ \textit{Physics
-Today} 42.10 (1989), S. 9--11.
-\end{itemize}
-%\printbibliography[keyword=articleexample1,heading=noheader]\nocite{Mermin1989}
-%
+\fullcitebib{Mermin1989}
+
 \emph{Hinweis:} Die Angabe einer Ausgabe für \emph{mehrere} Monate ist in \texttt{biblatex} nicht mehr
 über das Feld \texttt{month} möglich, denn dieses darf nur mehr \emph{einen} Wert enthalten.
 In diesem Fall kann jedoch einfach das \texttt{issue}-Feld verwendet (\zB\ \verb!issue={Mai/Juni}!
@@ -487,8 +501,7 @@ insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertati
 
 \bigskip % kludge to force heading to next page
 \paragraph{Dissertation (Doktorarbeit):}
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @thesis{Eberl1987,
 	author={Eberl, Gerhard},
@@ -501,26 +514,17 @@ insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertati
 	hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{Eberl1987}]
-Gerhard Eberl. "`Automatischer Landeanflug durch Rechnersehen"'.
-Diss.\ München:\ Universität der Bundeswehr, Fakultät für Raum- und
-Luftfahrttechnik, Aug.\ 1987.
-\end{itemize}
-%\printbibliography[keyword=phdthesisexample1,heading=noheader]\nocite{Eberl1987}
+\fullcitebib{Eberl1987}
 
 \paragraph{Magister- oder Masterarbeit:} ~ \newline
 Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\{mathesis\}}.%
-%\footnote{Man beachte dabei, dass offiziell (zumindest in Österreich) auch die 
-%Abschlussarbeiten von \emph{Master}studiengängen weiterhin als "`Diplomarbeiten"' 
-%bezeichnet werden.} % ab März 2012 gilt das nicht mehr
 
 %%------------------------------------------------------
 
 \paragraph{Diplomarbeit:} ~ \newline
 Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\obnh\{Diplomarbeit\}}:%
 %
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @thesis{Artner2007,
 	author={Artner, Nicole Maria},
@@ -534,14 +538,8 @@ Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\obnh\{Diplomarb
   hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{Artner2007}]
-Nicole Maria Artner. "`Analyse und Reimplementierung des Mean-Shift
-Tracking-Verfahrens"'. Diplomarbeit. Hagenberg, Austria:\ Upper 
-Austria University of Applied Sciences, Digitale Medien, Juli 2007. 
-\textsc{url}:\ \url{http://theses.fh-hagenberg.at/thesis/Artner07}.
-\end{itemize}
-%\printbibliography[keyword=diplomarbeitexample1,heading=noheader]\nocite{Artner2007}
-%
+\fullcitebib{Artner2007}
+
 Der Inhalt des Felds \verb!url={..}! wird dabei automatisch und ohne zusätzliche
 Kennzeichnung als URL gesetzt (mit dem \verb!\url{..}! Makro).
 
@@ -550,8 +548,7 @@ Kennzeichnung als URL gesetzt (mit dem \verb!\url{..}! Makro).
 \paragraph{Bachelorarbeit:} ~ \newline
 Bachelorarbeiten gelten in der Regel zwar nicht als "`richtige"' Publikationen, bei Bedarf müssen sie aber dennoch referenziert werden können. 
 %
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @thesis{Bacher2004,
 	author={Bacher, Florian},
@@ -565,14 +562,7 @@ Bachelorarbeiten gelten in der Regel zwar nicht als "`richtige"' Publikationen, 
 	keywords={bachelorarbeitexample1} 
 }
 \end{GenericCode}
-\item[\cite{Bacher2004}]
-Florian Bacher. "`Interaktionsmöglichkeiten mit Bildschirmen und groß-
-flächigen Projektionen"'. Bachelorarbeit. Hagenberg, Austria:\ Upper
-Austria University of Applied Sciences, Medientechnik und {-design},
-Juni 2004.
-\end{itemize}
-%\printbibliography[keyword=bachelorarbeitexample1,heading=noheader]\nocite{Bacher2004}
-%
+\fullcitebib{Bacher2004}
 
 
 %%------------------------------------------------------
@@ -584,8 +574,7 @@ Hochschulinstituten oder Forschungsprojekten.
 Wichtig ist, dass die herausgebende Organisationseinheit (Firma, Institut, Fakultät \etc) und 
 Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben, sofern vorhanden. 
 %
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @techreport{Drake1948,
   author={Drake, Huber M. and McLaughlin, Milton D. and Goodman, Harold R.},
@@ -599,14 +588,7 @@ Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben,
   hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Drake1948}]
-Huber M.\ Drake, Milton D.\ McLaughlin und Harold R.\ Goodman.
-\textit{Results obtained during accelerated transonic tests of the Bell XS-1
-airplane in flights to a MACH number of 0.92}. Techn.\ Ber.\ NACA-
-RM-L8A05A. Edwards, CA:\ NASA Dryden Flight Research Center,
-Jan. 1948. \textsc{url}:\ \url{http://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf}.
-\end{itemize}
-%\printbibliography[keyword=techreportexample1,heading=noheader]\nocite{Drake1948}
+\fullcitebib{Drake1948}
 
 %%------------------------------------------------------
 
@@ -614,8 +596,7 @@ Jan. 1948. \textsc{url}:\ \url{http://www.nasa.gov/centers/dryden/pdf/87528main_
 \label{sec:@manual}
 Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dokumentation an, wie etwa Produktbeschreibungen von Herstellern, Anleitungen, Präsentationen, Normen, White Papers \usw Die Dokumentation muss dabei nicht zwingend gedruckt existieren.
 %
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @manual{Mittelbach2016,
 	author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
@@ -628,13 +609,8 @@ Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dok
 	keywords={manualexample1}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2016}]
-Frank Mittelbach u. a.
-The \texttt{amsmath} package.
-Version 2.16a. Nov. 2016. \textsc{url}: \url{http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf}.
-\end{itemize}
-%\printbibliography[keyword=manualexample1,heading=noheader]\nocite{Mittelbach2016}
-%
+\fullcitebib{Mittelbach2016}
+
 Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vorname}+\emph{Nachname} interpretiert wird.%
 \footnote{Im Unterschied zu BibTeX wird in \texttt{biblatex} bei \texttt{@manual}-Einträgen das Feld \texttt{organization} nicht als Ersatz für \texttt{author} akzeptiert.}
 
@@ -644,7 +620,7 @@ Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \e
 \label{sec:@misc}
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
 nicht das Auslangen gefunden werden, sollte man sich zunächst die weiteren (hier nicht näher beschriebenen) 
-Typen im \texttt{biblatex}-Handbuch \cite{Lehman2016} ansehen, beispielsweise
+Typen im \texttt{biblatex}-Handbuch \parencite{Lehman2016} ansehen, beispielsweise
 \texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein Beitrag darin)
 oder \texttt{@patent} für ein Patent oder eine Patentanmeldung.
 
@@ -653,8 +629,7 @@ Textfeld \texttt{howpublished} vorsieht, in dem die Art der Publikation individu
 angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gesetzestext 
 (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
 %
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @misc{OoeRaumordnungsgesetz1994,
 	title={Oberösterreichisches Raumordnungsgesetz 1994},
@@ -663,12 +638,7 @@ angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gese
 	hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{OoeRaumordnungsgesetz1994}]
-\textit{Oberösterreichisches Raumordnungsgesetz 1994}. LGBl 1994/114 idF
-1995/93. \textsc{url}: \url{http://www.ris.bka.gv.at/Dokumente/LrOO/LOO40007538/LOO40007538.pdf}.
-\end{itemize}
-%\printbibliography[keyword=miscexample1,heading=noheader]\nocite{OoeRaumordnungsgesetz1994}
-%
+\fullcitebib{OoeRaumordnungsgesetz1994}
 
 
 
@@ -692,8 +662,7 @@ Gliederung des Quellenverzeichnisses zu ermöglichen.
 \label{sec:@audio}
 Hier ein Beispiel für die Spezifikation einer Audio-CD:
 %
-\begin{itemize}
-\item[] 
+
 \begin{GenericCode}[numbers=none]
 @audio{Zappa1995,
   author={Zappa, Frank},
@@ -706,11 +675,8 @@ Hier ein Beispiel für die Spezifikation einer Audio-CD:
   keywords={audioexample1}
 }
 \end{GenericCode}
-\item[\cite{Zappa1995}]
-Frank Zappa. \textit{Freak Out}. Audio-CD. Rykodisc, New York. Mai 1995.
-\end{itemize}
-%\printbibliography[keyword=audioexample1,heading=noheader]\nocite{Zappa1995}
-%
+\fullcitebib{Zappa1995}
+
 Anstelle von \verb!howpublished={Audio-CD}! könnte auch 
 \verb!type={audiocd}! verwendet werden.
 
@@ -719,8 +685,7 @@ Anstelle von \verb!howpublished={Audio-CD}! könnte auch
 \label{sec:@video}
 Hier ein Beispiel für die Spezifikation einer DVD-Edition:
 %
-\begin{itemize}
-\item[] 
+
 \begin{GenericCode}[numbers=none]
 @video{Futurama1999,
   author={Groening, Matt},
@@ -733,12 +698,8 @@ Hier ein Beispiel für die Spezifikation einer DVD-Edition:
   hyphenation={english}
  }
 \end{GenericCode}
-\item[\cite{Futurama1999}]
-Matt Groening. \textit{Futurama}. Season 1 Collection. DVD. 
-Twentieth Century Fox Home Entertainment. Feb.\ 2002.
-\end{itemize}
-%\printbibliography[keyword=videoexample1,heading=noheader]\nocite{Futurama1999}
-%
+\fullcitebib{Futurama1999}
+
 In diesem Fall ist das angegebene Datum der \emph{Erscheinungstermin}. 
 Falls kein eindeutiger Autor namhaft gemacht werden kann, lässt man das
 \texttt{author}-Feld weg und verpackt die entsprechenden Angaben im \texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
@@ -754,8 +715,7 @@ im \texttt{note}-Feld angegeben:%
 \footnote{Übrigens achtet \texttt{biblatex} netterweise darauf, dass der  
 Punkt am Ende des \texttt{note}-Texts in der Ausgabe nicht verdoppelt wird.}
 %
-\begin{itemize}
-\item[] 
+
 \begin{GenericCode}[numbers=none]
 @movie{Nosferatu1922,
     title={Nosferatu -- A Symphony of Horrors},
@@ -765,14 +725,8 @@ Punkt am Ende des \texttt{note}-Texts in der Ausgabe nicht verdoppelt wird.}
     hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Nosferatu1922}]
-\textit{Nosferatu -- A Symphony of Horrors}. Film. 
-Drehbuch/Regie:\ F.\ W.\ Murnau. 
-Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.
-1922.
-\end{itemize}
-%\printbibliography[keyword=movieexample1,heading=noheader]\nocite{Nosferatu22}
-%
+\fullcitebib{Nosferatu1922}
+
 Die Angabe \verb!howpublished={Film}! ist hier sinnvoll, um die Verwechslung
 mit einem (möglicherweise gleichnamigen) Buch auszuschließen.
 
@@ -781,10 +735,9 @@ mit einem (möglicherweise gleichnamigen) Buch auszuschließen.
 \subsubsection{\texttt{@software}}
 \label{sec:@software}
 Dieser Eintragstyp ist insbesondere für Computerspiele geeignet (in Ermangelung
-eines eigenen Eintragstyps). Hier ein konkretes Beispiel \cite{LegendOfZelda1998}:
+eines eigenen Eintragstyps).
 %
-\begin{itemize}
-\item[] 
+
 \begin{GenericCode}[numbers=none]
 @software{LegendOfZelda1998,
    author={Miyamoto, Shigeru and Aonuma, Eiji and Koizumi, Yoshiaki},
@@ -795,7 +748,7 @@ eines eigenen Eintragstyps). Hier ein konkretes Beispiel \cite{LegendOfZelda1998
    hyphenation={english}
 }
 \end{GenericCode}
-\end{itemize}
+\fullcitebib{LegendOfZelda1998}
 
 
 
@@ -804,11 +757,11 @@ eines eigenen Eintragstyps). Hier ein konkretes Beispiel \cite{LegendOfZelda1998
 Einen Verweis auf eine bestimmten Stelle in einem Musikstück oder Film kann man 
 ähnlich ausführen wie die Seitenangabe in einem Druckwerk.
 Besonders legendär (und häufig parodiert) ist beispielsweise die Duschszene
-in \emph{Psycho} \cite[T=00:32:10]{Psycho1960}.
-Alternativ zur simplen Zeitangabe "`T=\emph{hh}:\emph{mm}:\emph{ss}"' 
+in \textcite[T=00:32:10]{Psycho1960}.
+Alternativ zu einer simplen Zeitangabe "`T=\emph{hh}:\emph{mm}:\emph{ss}"' 
 könnte man eine bestimmte Stelle auch auf den Frame genau durch 
 den zugehörigen \emph{Timecode} "`TC=\emph{hh:mm:ss:ff}"' angeben, 
-\zB\ \cite[TC=00:32:10:12]{Psycho1960} für Frame \emph{ff}=12.
+\zB\ \parencite[TC=00:32:10:12]{Psycho1960} für Frame \emph{ff}=12.
 
 
 
@@ -846,24 +799,20 @@ Durch den Umfang und die steigende Qualität dieser Einträge erscheint
 die Aufnahme in das Quellenverzeichnis durchaus berechtigt.
 Beispielsweise bezeichnet man als "`Reliquienschrein"'
 einen Schrein, in dem die Reliquien eines oder 
-mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2016}.
+mehrerer Heiliger aufbewahrt werden \parencite{WikiReliquienschrein2016}.
 %
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @online{WikiReliquienschrein2016,
+	author={Wikipedia},
 	url={https://de.wikipedia.org/wiki/Reliquienschrein},
 	year={2016},
 	month={8},
 	urldate={2017-02-28}
 }
 \end{GenericCode}
-\item[\cite{WikiReliquienschrein2016}]
-Aug. 2016. \textsc{url}: \url{https://de.wikipedia.org/wiki/Reliquienschrein}
-(besucht am 28.02.{\hskip0pt}2017).
-\end{itemize}
-%\printbibliography[keyword=onlineexample2,heading=noheader]\nocite{WikiReliquienschrein2015}
-%
+\fullcitebib{WikiReliquienschrein2016}
+
 In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL, Jahr und Monat können die Version näher spezifizieren, die zum gegebenen Zeitpunkt aktuell war.
 Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format) wird automatisch die Information eingefügt, wann das Online-Dokument eingesehen wurde.
 
@@ -871,8 +820,7 @@ Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format
 \subsubsection{Beispiel: online Video} 
 \label{sec:@online-video}
 %
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @online{HistoryOfComputers2008,
     title={History of Computers},
@@ -882,12 +830,8 @@ Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format
     hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{HistoryOfComputers2008}]
-\textit{History of Computers}. Sep. 2008. 
-\textsc{url}: \url{http://www.youtube.com/watch?v=LvKxJ3bQRKE}.
-\end{itemize}
-%\printbibliography[keyword=onlineexample1,heading=noheader]\nocite{HistoryOfComputers2008}
-%
+\fullcitebib{HistoryOfComputers2008}
+
 Bis auf das Feld \texttt{url} können alle Angaben weggelassen werden. Die Angabe von 
 weiteren Details (\zB\ \texttt{author}) ist natürlich ebenso möglich.
 
@@ -897,21 +841,18 @@ In Abbildungen wird sehr häufig fremdes Bildmaterial verwendet, dessen Herkunft
 in jedem Fall angegeben werden sollte. Die Angabe von URLs unmittelbar in den Captions von Abbildungen
 ist problematisch, weil sie meistens für das Schriftbild ziemlich störend sind.
 Einfacher ist es, auch einzelne Bilder und Grafiken ins Quellenverzeichnis aufzunehmen und
-wie üblich mit dem \verb!\cite{..}! Kommando darauf zu verweisen.
+wie üblich mit dem \verb!\parencite{..}! Kommando darauf zu verweisen.
 Beispiele dazu sind die Angaben zu Abb.\ \ref{fig:CocaCola}--\ref{fig:ibm360}.
 %
-\begin{itemize}
-\item[]
+
 \begin{GenericCode}[numbers=none]
 @online{IBM360,
+	author={Markiewicz, Pete},
+	title={Plyojump -- Computer History},
 	url={http://www.plyojump.com/classes/mainframe_era.php}
 }
 \end{GenericCode}
-\item[\cite{IBM360}]
-\textsc{url}: \url{http://www.plyojump.com/classes/mainframe_era.php}.
-\end{itemize}
-%\printbibliography[keyword=onlineexample3,heading=noheader]\nocite{IBM360}
-%
+\fullcitebib{IBM360}
 
 \subsection{Elektronische Datenträger als Ergänzung zur Arbeit}
 
@@ -942,7 +883,7 @@ angegeben.
 
 Das \texttt{language} Attribut ermöglichte im Zusammenhang mit dem \texttt{babelbib}-Paket 
 den korrekten Satz mehrsprachiger Quellenverzeichnisse. \texttt{babelbib} wird in 
-dieser Vorlage \emph{nicht} mehr verwendet, sondern durch \texttt{biblatex} \cite{Lehman2016} ersetzt.
+dieser Vorlage \emph{nicht} mehr verwendet, sondern durch \texttt{biblatex} \parencite{Lehman2016} ersetzt.
 Hier wird allerdings das \texttt{language}-Feld anders interpretiert und
 stattdessen das \texttt{hyphenation}-Feld verwendet, das nach Möglichkeit 
 bei jedem Quelleneintrag angegeben werden sollte, also beispielsweise
@@ -985,7 +926,7 @@ Gleiches gilt für DOI-Nummern -- aber das möge der Betreuer entscheiden.
 
 \subsubsection{Listing aller Quellen}
 
-Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
+Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\parencite{}! oder \verb!\textcite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
 
 
 \subsubsection{Ergänzungen zu \texttt{biblatex}}
