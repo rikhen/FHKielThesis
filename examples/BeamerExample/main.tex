@@ -1,0 +1,119 @@
+\documentclass[
+	hyperref={unicode},	%% must match the hyperref options used by hgb.sty (overrule with hypersetup below)
+	url={hyphens},
+	english
+	]{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  %\usefonttheme{default}  % or try serif, structurebold, ...
+	%\usefonttheme[onlymath]{serif}
+	\usefonttheme{professionalfonts}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{hgb}
+\RequirePackage{hgbmath}
+\RequirePackage{hgbabbrev}
+\RequirePackage{hgblistings}
+
+\hypersetup{
+	colorlinks = true,	% use colored links (no boxes)	
+}
+
+%%https://tex.stackexchange.com/questions/24371/does-enumitem-conflict-with-beamer-for-lists/24491#24491
+% This handles the incopatibility between beamer and enumitem (used by hgb.sty):
+\setitemize{label=\usebeamerfont*{itemize item}%
+  \usebeamercolor[fg]{itemize item}
+  \usebeamertemplate{itemize item}}
+
+\title[Your Short Title]{Title of Your Presentation}
+\author{Your Name}
+\institute{Where You're From}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Uncomment these lines for an automatically generated outline.
+%\begin{frame}{Outline}
+%  \tableofcontents
+%\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Introduction}
+
+\begin{itemize}
+  \item Your introduction goes here!
+  \item Use \texttt{itemize} to organize your main points.
+\end{itemize}
+
+\vskip 1cm
+
+\begin{block}{Examples}
+Some examples of commonly used commands and features are included, to help you get started.
+\end{block}
+
+\end{frame}
+
+\section{Some \LaTeX{} Examples}
+
+
+\subsection{Tables and Figures}
+
+\begin{frame}{Tables and Figures}
+
+\begin{itemize}
+\item Use \texttt{tabular} for basic tables --- see Table~\ref{tab:widgets}, for example.
+\item You can upload a figure (JPEG, PNG or PDF) using the files menu. 
+\item To include it in your document, use the \texttt{includegraphics} command (see the comment below in the source code).
+\end{itemize}
+
+% Commands to include a figure:
+%\begin{figure}
+%\includegraphics[width=\textwidth]{your-figure's-file-name}
+%\caption{\label{fig:your-figure}Caption goes here.}
+%\end{figure}
+
+\begin{table}
+\centering
+\begin{tabular}{l|r}
+Item & Quantity \\\hline
+Widgets & 42 \\
+Gadgets & 13
+\end{tabular}
+\caption{\label{tab:widgets}An example table.}
+\end{table}
+
+\end{frame}
+
+\subsection{Mathematics}
+
+\begin{frame}{Readable Mathematics}
+
+Let $X_0, X_1, \ldots, X_{n-1}$ be a sequence of $n$ independent and identically distributed random variables, with $\mathrm{E}[X_i] = \mu$ and $\mathrm{Var}[X_i] = \sigma^2 < \infty$, and let
+\begin{equation}
+S_n = \frac{X_0 + X_1 + \cdots + X_n}{n-1}
+      = \frac{1}{n} \cdot\sum_{i=0}^{n-1} X_i
+\label{eq:Mean}
+\end{equation}
+denote their \emph{mean}. Then as $n$ approaches infinity, the random variables $\sqrt{n} \cdot(S_n - \mu)$ converge 
+to a normal distribution $\mathcal{N}(0, \sigma^2)$.
+
+\end{frame}
+
+\end{document}
