@@ -11,3 +11,5 @@
 *.tps
 *.tcp
 tmpltx
+*.snm
+*.nav
