@@ -47,6 +47,13 @@
 %% beamer problem; beamer loads hyperref and url, but url must be loaded before hyperref! Move to class files?
 %\RequirePackage[T1,hyphens,obeyspaces,spaces,lowtilde]{url}
 %\urlstyle{sf}
+\@ifundefined{setbeamertemplate}%	only load url package if BEAMER is not used
+	{\typeout{****** BEAMER NOT DEFINED *****}%
+	\RequirePackage[T1,hyphens,obeyspaces,spaces,lowtilde]{url}%
+	\urlstyle{sf}}	%beamer has been loaded
+	{\typeout{****** BEAMER DEFINED *****}}
+
+
 
 
 \RequirePackage{verbatim}
