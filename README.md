@@ -2,12 +2,12 @@
 
 ## What you find here
 
-This is a collection of modern LaTeX classes, style files and example documents for authoring 
-**Bachelor, Master or Diploma theses** and related academic manuscripts in English and German. 
+This is a collection of modern LaTeX classes, style files and example documents for authoring
+**Bachelor, Master or Diploma theses** and related academic manuscripts in English and German.
 Pre-configured documents for English and German are available, easy to use even for LaTeX beginners and compatible with LaTeX distributions for Windows, Mac OS and Linux. The document classes are immediately usable and easy to customize.
 
 The main document ([**HgbThesisTutorial**](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf))
-serves both as a **template** and **tutorial** for authoring a Bachelor, Master or Diploma thesis with LaTeX. 
+serves both as a **template** and **tutorial** for authoring a Bachelor, Master or Diploma thesis with LaTeX.
 Originally developed as an internal standard at the Upper Austria University of Applied Sciences at Hagenberg,
 this setup has become popular at several other (mostly German-speaking) institutions over the last years.
 
@@ -22,7 +22,7 @@ such as [*MikTeX*](https://miktex.org/) and [*TexLive*](https://www.tug.org/texl
 
 ### Checkout (local LaTeX installation)
 
-To open a sample document on your own computer use the appropriate **download** (ZIP) link in the table below. 
+To open a sample document on your own computer use the appropriate **download** (ZIP) link in the table below.
 Unzip the downloaded archive to a suitable location and open the `main.tex` file in your TeX editor.
 Make sure you have a recent LaTeX environment installed.
 
@@ -40,6 +40,7 @@ The following sample documents are currently available:
 | Name | Document Type | Language | PDF | ZIP | Overleaf |
 | :--- | :--- | --- | --- | --- | --- |
 | `HgbThesisTutorial` | **Thesis Template and Tutorial** | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) |
+| `FHThesisDE` | Minimal Thesis  Template | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/FHThesisDE/fhmain.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/FHThesisDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/FHThesisDE.zip) |
 | `HgbThesisDE` | Minimal Thesis  Template | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) |
 | `HgbThesisEN` | Minimal Thesis  Template | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) |
 | `HgbInternshipReport` | Internship Report | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport.zip) |
@@ -59,15 +60,3 @@ The following sample documents are currently available:
 * [Recent changes](CHANGES.md)
 * [License](LICENSE.md)
 * [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
-
-
-
-
-
-
-
-
-
-
-
-
