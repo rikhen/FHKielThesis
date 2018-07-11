@@ -1,0 +1,80 @@
+%% lie.sty
+%% Custom Comments
+%% Author: Henrik Liebel (henrik.liebel@fh-kiel.de)
+%% File encoding: ASCII
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgb}[\hgbDate]
+\newcommand{\fhDate}{2018/07/11}	% version string
+\ProvidesPackage{fh}[\fhDate]
+
+% Create a default/fallback main language so it is set no matter what
+\providecommand{\fh@MainLanguage}{german}
+
+
+%% Required Packages ----------------------------------------------------------
+
+\RequirePackage[german]{cleveref}
+
+%% hyperref Setup -------------------------------------------------------------
+
+\RequirePackage[unicode]{hyperref}	% utf8-change
+\hypersetup{
+	linktocpage = false,				% make page number, not text, be link on TOC, LOF and LOT 
+	colorlinks = true,				% don't uses colored links (because this shows up in printing!) 
+    bookmarksopen = true,
+    bookmarksnumbered = true,		% Lesezeichen in PDF-Datei erstellen
+	pdfborder = {0 0 0.5},			% use a thinner (0.5pt) border around all PDF links
+	allbordercolors = {0 0 0.8},	% dark blue border for all types of links
+	breaklinks = true,				% allow links to break over lines by making links over multiple lines
+    pagebackref = false
+}	%see https://www.tug.org/applications/hyperref/manual.html
+
+
+%% Layout Settings ------------------------------------------------------------
+
+\setlist{%
+	partopsep = .0ex plus .5ex, 
+	topsep = 1.5ex plus .3ex, 
+	itemsep = .0ex plus .5ex, 
+	parsep = .4ex plus .2ex
+} % Change spacing in listings
+
+
+%% Date-related commands ------------------------------------------------------
+
+\newdate{fh@date}{\the\day}{\the\month}{\the\year}
+\newcommand{\Date}[3]{%	example for use: \Date{16}{5}{2008}
+  \@modifydate{fh@date}{#1}{#2}{#3}
+}
+
+\newcommand{\fh@GetDateDay}{\getdateday{hgb@date}}
+\newcommand{\fh@GetDateMonth}{\getdatemonth{hgb@date}}
+\newcommand{\fh@GetDateYear}{\getdateyear{hgb@date}}
+\newcommand{\fh@DisplayDate}{\displaydate{hgb@date}}
+
+
+%% Eigene Kommandos  --------------------------------------------
+
+\def\SymbReg{\textsuperscript{\textregistered}}
+\def\SymbTrade{\textsuperscript{\texttrademark}}
+\def\SymbCopy{\textsuperscript{\textcopyright}}
+
+\newcommand{\registered}[1]{\textsc{#1}\texorpdfstring{\SymbReg}{\textregistered}} % Handelsmarke, eingetragen
+\newcommand{\trademark}[1]{{#1}\SymbTrade} % Warenzeichen
+
+\newcommand{\regis}[1]{\textsc{#1}\SymbReg} % Handelsmarke, eingetragen
+\newcommand{\trade}[1]{{#1}\SymbTrade} % Warenzeichen
+\newcommand{\namefoot}[4]{\textsc{#1}\footnote{\textsc{#1}, #2 (#3), #4}} % Fußnote für Namen bedeutender Personen
+\newcommand{\uA}{u.\,A. }
+
+\newcommand*\total[3]{\left.#1\right\rvert_{#2}^{#3}} % totales Differential
+
+\newcommand\circled[1]{%
+	\tikz[baseline=(X.base)] 
+	\node (X) [draw, shape=circle, inner sep=0] {\strut #1};} % Kreis um Text einfügen
+
+\newcommand{\entsp}{\ensuremath{\mathrel{\wid ehat{=}}}} % "Entspricht"-Zeichen
+
+
+%% --------------------------------------------------------------

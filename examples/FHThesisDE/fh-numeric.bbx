@@ -1,0 +1,79 @@
+\ProvidesFile{fh-numeric.bbx}[2017/07/10 v0.0.1 biblatex bibliography style]
+
+\RequireBibliographyStyle{numeric}
+\ExecuteBibliographyOptions{%
+  sorting=none,
+  sortlocale=de_DE,
+  giveninits=true,
+  date=short,
+  isbn=false,
+  backref=false,
+}
+
+%\DeclareFieldFormat[thesis]{citetitle}{\mkbibquote{#1}}
+
+\DeclareNameAlias{default}{family-given}
+
+% Semikolon zwischen Autoren
+\AtBeginBibliography{%
+    \renewcommand*{\multinamedelim}{\addsemicolon\space}%
+    \renewcommand*{\finalnamedelim}{\addsemicolon\space}%   
+}
+
+% et al. bei mehreren Autoren
+\DefineBibliographyStrings{ngerman}{%
+    andothers = {et\addspace al\adddotspace},%
+    andmore = {et\addspace al\adddotspace},%
+}
+
+% Textformatierung für Titel
+\DeclareFieldFormat[incollection, inproceedings]{booktitle}{\textnormal{#1}}
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]{title}{\textit{#1}}
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]{location}{\addsemicolon\space{#1}}
+
+\@ifpackagelater{biblatex}{2016/03/27}
+  {\newcommand\MethodFormat{%
+     \printtext[labelnumberwidth]{%
+        \printfield{labelprefix}%
+        \printfield{labelnumber}}}}%
+  {\newcommand\MethodFormat{%
+     \printtext[labelnumberwidth]{%
+        \printfield{prefixnumber}%
+        \printfield{labelnumber}}}}%
+
+  
+% Copy-pasted from 'numeric.bbx'
+\defbibenvironment{bibliography}
+  {\list%
+     {\MethodFormat}%
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}
+      }%
+  {\endlist}%
+  {\item}%
+  \DeclareBibliographyDriver{thesis}{%
+  \printnames{author}%
+  \setunit*{\addcolon\space}\newblock
+  \printtext{\textit{\printfield{title}}}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit
+  \printlist{institution}%
+  \newunit
+  \printlist{location}%
+  \newunit
+  \printfield{year}%
+  \finentry}
+  \renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}% Namen der Autoren in Kapitälchen 
+%\renewcommand*{\newblockpunct}{\addsemicolon\space}
+  \renewcommand*{\newunitpunct}{\addsemicolon\space}% Trennzeichen zwischen Blöcken
+  \renewcommand*{\finentrypunct}{\space}% Letztes Trennzeichen des Eintrags
+  \renewcommand*{\labelnamepunct}{\addcolon\space}% Trennzeichen nach Autor
+  \renewcommand*{\subtitlepunct}{\addcolon\space}% Doppelpukt vor Untertitel
+  \renewbibmacro{in:}{}
+\endinput

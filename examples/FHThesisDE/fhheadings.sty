@@ -1,0 +1,35 @@
+%% fhheadings.sty
+%% Headings setup
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Henrik Liebel (henrik.liebel@student.fh-kiel.de)
+%% File encoding: ASCII
+
+\ProvidesPackage{hgbheadings}[2018/07/01]
+\ProvidesPackage{fhheadings}[2018/07/11]
+
+\RequirePackage{scrlayer-scrpage}
+
+\clearpairofpagestyles
+
+\setkomafont{pageheadfoot}{\sffamily\footnotesize}
+\setkomafont{pagehead}{\itshape}% Überschrift in Kopfzeile kursiv
+\setkomafont{pagination}{}
+
+\KOMAoptions{% Hilfslinien in Kopf- und Fußzeile anzeigen
+	headsepline = true,
+	plainheadsepline = true,
+	footsepline = true,
+	plainfootsepline = true,
+}
+\makeatletter
+\automark[chapter]{chapter}
+\ihead*{\textsc{\headmark}}
+\cfoot*{\normalfont{\pagemark}}
+
+%% Setup for headings (title, toc, abstract) for hgb* classes only ------------
+\makeatletter%
+\@ifclassloaded{fhthesis}{%
+	\RequirePackage[titles]{tocloft}%
+	\renewcommand{\cftchapfont}{\bfseries}%\sffamily}
+}{}%
+\makeatother%

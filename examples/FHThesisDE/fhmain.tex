@@ -1,0 +1,140 @@
+%%% File encoding: UTF-8
+%%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
+
+%%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex
+% !TeX spellcheck = de_DE
+% !BIB program = biber
+% arara: pdflatex: { synctex: on }
+% arara: biber
+% arara: makeglossaries
+% arara: pdflatex: { synctex: on }
+
+\documentclass[bachelor,german]{fhthesis}
+% Zulässige Optionen in [..]:
+%   Typ der Arbeit: diploma, master (default), bachelor, internship
+%   Hauptsprache: german (default), english
+%%%----------------------------------------------------------
+
+\usepackage{scrwfile} % Wichtig, ansonsten erscheint "No room for a new \write"
+\usepackage{blindtext} % Nur zum Testen
+\usepackage[layout={inline,index},innerlayout=,marginclue=true,lang=german,author=,status=draft]{fixme} % Anmerkungen einfügen
+\fxusetheme{color}
+
+%%%----------------------------------------------------------
+% Verzeichnisse
+%%%----------------------------------------------------------
+
+\usepackage{fhglossaries}
+\makeglossaries
+\loadglsentries{glossaries/symbols}
+\loadglsentries{glossaries/acronyms}
+
+%%%----------------------------------------------------------
+
+\RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
+
+\graphicspath{{images/}}    % Verzeichnis mit Bildern und Grafiken
+\logofile{logo}				% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
+\bibliography{bibliography}  	% Biblatex-Literaturdatei (references.bib)
+
+%%%----------------------------------------------------------
+% Angaben für die Titelei (Titelseite, Erklärung etc.)
+%%%----------------------------------------------------------
+
+%%% Einträge für ALLE Arbeiten: -----------------------------
+\title{Partielle Lösungen zur allgemeinen Problematik}
+\author{Peter A.\ Schlaumeier}
+\studentnumber{123456} % Matrikel-Nummer
+\semester{Sommersemester 2018}
+\department{Maschinenwesen}% Fachbereich
+\programname{Bachelor of Engineering} % Studiengang
+\university{Fachhochschule Kiel} % Hochschule
+\companyName{} % Firma
+\placeofstudy{Kiel}
+\dateofsubmission{2018}{07}{11}	% {YYYY}{MM}{DD}
+
+%%% Zusätzlich für eine Bachelorarbeit: ---------------------
+\advisor{Alois B.~Treuer, Päd.\ Phil.}
+\secondexaminer{} % Zweitprüfer
+
+%%% Restriktive Lizenformel anstatt CC (nur für Typ master) -
+%\strictlicense
+
+%%%----------------------------------------------------------
+\begin{document}
+%%%----------------------------------------------------------
+
+%%%----------------------------------------------------------
+\pagenumbering{Roman}
+%\frontmatter                    % Titelei (röm. Seitenzahlen)
+\thispagestyle{empty}
+%%%----------------------------------------------------------
+\maketitle
+
+\pdfbookmark{\contentsname}{tableofcontents} % Lesezeichen für Inhaltsverzeichnis
+\setcounter{page}{1} % Seitenzahlen ab hier mit #1
+\pagestyle{plain}
+\tableofcontents
+
+% Verzeichnisse einfügen
+\listoffigures
+\listoftables
+
+\addchap{Symbolverzeichnis}
+\printglossary[type=indices, style=indices]
+\printglossary[type=constants, style=constants]
+\printglossary[type=latin, style=symbols]
+\printglossary[type=greek, style=symbols]
+\printglossary[type=dimless, style=symbols]
+\addchap{Abkürzungsverzeichnis}
+\printglossary[type=\acronymtype, style=acronym]
+
+%\include{front/vorwort} % Optional. Ggf. weglassen
+%\include{front/kurzfassung}
+%\include{front/abstract}
+
+%%%----------------------------------------------------------
+\pagenumbering{arabic} % Hauptteil (ab hier arab. Seitenzahlen)
+\pagestyle{headings}
+%\mainmatter
+%%%----------------------------------------------------------
+
+\include{chapters/einleitung}
+\include{chapters/abschlussarbeit}
+\include{chapters/latex}
+\include{chapters/abbildungen}
+\include{chapters/mathematik}
+\include{chapters/literatur}
+\include{chapters/drucken}
+\include{chapters/schluss}
+
+%%%----------------------------------------------------------
+\pagenumbering{roman}  % ab hier römische Seitenzahlen)
+\pagestyle{plain}
+%%%----------------------------------------------------------
+
+%%%----------------------------------------------------------
+\appendix                                            % Anhang
+%%%----------------------------------------------------------
+
+\include{back/anhang_a}	% Technische Ergänzungen
+\include{back/anhang_b}	% Inhalt der CD-ROM/DVD
+\include{back/anhang_c}	% Chronologische Liste der Änderungen
+\include{back/anhang_d}	% Quelltext dieses Dokuments
+
+%%%----------------------------------------------------------
+\MakeBibliography[nosplit]                        % Quellenverzeichnis
+%%%----------------------------------------------------------
+
+%%% Messbox zur Druckkontrolle ------------------------------
+\include{back/messbox}
+%%%----------------------------------------------------------
+
+%%% Übersicht mit Todo's ------------------------------------
+\newpage
+\listoffixmes
+%%%----------------------------------------------------------
+\end{document}
+%%%----------------------------------------------------------

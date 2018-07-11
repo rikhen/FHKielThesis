@@ -1,0 +1,141 @@
+%% fhglossaries.sty
+%% Glossaries setup
+%% Author: Henrik Liebel (henrik.liebel@fh-kiel.de)
+%% File encoding: ASCII
+
+\ProvidesPackage{fhglossaries}[2018/07/11]
+\RequirePackage[style=long3col, nomain, toc=false, nogroupskip, nonumberlist, acronym, section=section]{glossaries-extra} 
+\renewcommand*{\glsglossarymark}[1]{}
+
+% Create new glossaries for symbols
+\newglossary*{latin}{Lateinische Symbole} 
+\newglossary*{greek}{Griechische Symbole} 
+\newglossary*{constants}{Konstanten} 
+\newglossary*{indices}{Indizes} 
+\newglossary*{dimless}{Dimensionslose Kennzahlen}
+
+\glsaddkey 
+{unit} 
+{\glsentrytext{\glslabel}} 
+{\glsentryunit} 
+{\GLsentryunit} 
+{\glsunit} 
+{\Glsunit} 
+{\GLSunit} 
+
+\glsaddkey 
+{value} 
+{\glsentrytext{\glslabel}} 
+{\glsentryvalue} 
+{\GLsentryvalue} 
+{\glsvalue} 
+{\Glsvalue} 
+{\GLSvalue} 
+
+\glssetnoexpandfield{unit} 
+
+% New style for acronyms
+\newglossarystyle{acronym}{ 
+	\setglossarystyle{long} 
+	\renewenvironment{theglossary}   
+	{\begin{longtable}{ 
+				@{} p{0.2\textwidth} 
+				@{} p{0.8\textwidth} 
+				@{} l @{}} 
+		}   
+		{\end{longtable}} 
+	% Table header  
+	\renewcommand*{\glossaryheader}{ 
+		\bfseries Abkürzung 
+		& \bfseries Bedeutung 
+		\\[3mm] 
+		\endhead 
+	} 
+	\renewcommand*{\glossentry}[2]{ 
+		\glstarget{##1}{\glossentryname{##1}} %Abkürzung 
+		& \glossentrydesc{##1}   %Beschreibung 
+		\\ 
+	} 
+} 
+
+% New style for symbols,  including units
+\newglossarystyle{symbols}{ 
+	\setglossarystyle{long3col} 
+	\renewenvironment{theglossary} 
+	{\begin{longtable}{ 
+				@{} p{0.15\textwidth}% default(0.2)				
+				@{} p{0.2\textwidth} 
+				@{} p{0.65\textwidth} 
+				@{} l @{}}} 
+		{\end{longtable}} 
+	% Table header 
+	\renewcommand*{\glossaryheader}{           
+		\bfseries Symbol 
+		& \bfseries Einheit 
+		& \bfseries Beschreibung 
+		\\[3mm] 
+		\endhead 
+	} 
+	\renewcommand*{\glossentry}[2]{ 
+		\glstarget{##1}{\glossentryname{##1}} 
+		& $\Bigl[\glsunit{##1}\Bigr]$% <- geändert 
+		& \glossentrydesc{##1} 
+		\\
+		\smallskip
+	} 
+} 
+\renewcommand*{\arraystretch}{1.5}% vertikaler Abstand der Einträge erhöhen (default=1)
+
+% New style for constants,  including units and values
+\newglossarystyle{constants}{ 
+	\renewenvironment{theglossary} 
+	{\begin{longtable}{ 
+				@{} p{0.15\textwidth} 
+				@{} p{0.15\textwidth} 
+				@{} p{0.20\textwidth} 
+				@{} p{0.55\textwidth} 
+				@{} l@{}} 
+		}%   
+		{\end{longtable}} 
+	% Table header 
+	\renewcommand*{\glossaryheader}{   
+		\bfseries Symbol 
+		& \bfseries Wert 
+		& \bfseries Einheit 
+		& \bfseries Beschreibung 
+		\\[3mm] 
+		\endhead 
+	} 
+	\renewcommand*{\glossentry}[2]{   
+		\glstarget{##1}{\glossentryname{##1}} %entry name 
+		& \glsvalue{##1}%Wert 
+		& $\left[\glsunit{##1}\right]$% <- geändert 
+		& \glossentrydesc{##1} %Description 
+		\\
+		\smallskip 
+	} 
+} 
+% New style for indices, including description
+\newglossarystyle{indices}{ 
+	\setglossarystyle{long} 
+	\renewenvironment{theglossary}   
+	{\begin{longtable}{ 
+				@{} p{0.15\textwidth} 
+				@{} p{0.85\textwidth} 
+				@{} l @{}} 
+		}   
+		{\end{longtable}} 
+	% Table header
+	\renewcommand*{\glossaryheader}{ 
+		\bfseries Index 
+		& \bfseries Beschreibung 
+		\\[3mm] 
+		\endhead 
+	} 
+	\renewcommand*{\glossentry}[2]{ 
+		\glstarget{##1}{\glossentryname{##1}} %short name 
+		& \glossentrydesc{##1}   %Description 
+		\\ 
+	} 
+} 
+\renewcommand*{\glspostdescription}{} 
